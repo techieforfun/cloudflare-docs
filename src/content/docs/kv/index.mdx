@@ -13,7 +13,8 @@ import {
 	Plan,
 	RelatedProduct,
 	Tabs,
-	TabItem
+	TabItem,
+	LinkButton
 } from "~/components";
 
 <Description>
@@ -28,20 +29,38 @@ Create a global, low-latency, key-value data storage.
 
 Workers KV is a data storage that allows you to store and retrieve data globally. With Workers KV, you can build dynamic and performant APIs and websites that support high read volumes with low latency.
 
-Workers KV is ideal for projects that require:
-
-- High volumes of reads and/or repeated reads to the same keys.
-- Per-object time-to-live (TTL).
-- Distributed configuration.
-
 For example, you can use Workers KV for:
 
 - Caching API responses.
 - Storing user configurations / preferences.
 - Storing user authentication details.
 
+Workers KV is ideal for projects that require:
+
+- High volumes of reads and/or repeated reads to the same keys.
+- Per-object time-to-live (TTL).
+- Distributed configuration.
+
+**Code examples**
+
 <Tabs>
-<TabItem label="index.ts">
+<TabItem label="REST API">
+```
+curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/storage/kv/namespaces/$NAMESPACE_ID/values/$KEY_NAME \
+    -X PUT \
+    -H 'Content-Type: multipart/form-data' \
+    -H "X-Auth-Email: $CLOUDFLARE_EMAIL" \
+    -H "X-Auth-Key: $CLOUDFLARE_API_KEY" \
+    -d '{
+      "value": "Some Value"
+    }'
+
+curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/storage/kv/namespaces/$NAMESPACE_ID/values/$KEY_NAME \
+    -H "X-Auth-Email: $CLOUDFLARE_EMAIL" \
+    -H "X-Auth-Key: $CLOUDFLARE_API_KEY"
+```
+</TabItem>
+<TabItem label="Workers Binding API">
 ```ts
 export interface Env {
 	YOUR_BINDING: KVNamespace;
@@ -49,20 +68,25 @@ export interface Env {
 
 export default {
 	async fetch(request, env, ctx): Promise<Response> {
+
+		//write a key-value pair
 		await env.YOUR_BINDING.put('KEY', 'VALUE');
+
+		// read a key-value pair
 		const value = await env.YOUR_BINDING.get('KEY');
+
+		//list all key-value pairs
 		const allKeys = await env.YOUR_BINDING.list();
+
+		//delete a key-value pair
 		await env.YOUR_BINDING.delete('KEY');
+
+		//return a Workers response
 		return new Response(
 			JSON.stringify({
 				value: value,
 				allKeys: allKeys,
 			}),
-			{
-				headers: {
-					'Content-Type': 'application/json'
-				},
-			}
 		);
 	},
 };
@@ -89,6 +113,8 @@ export default {
 ```
 </TabItem>
 </Tabs>
+
+Learn more about Workers KV [key concepts](/kv/how-kv-works/), or [get started](kv/get-started/).
 
 ---
 
