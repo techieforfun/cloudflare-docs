@@ -1,0 +1,24 @@
+---
+pcx_content_type: how-to
+title: Managed service providers (MSPs)
+sidebar:
+  order: 15
+---
+
+:::note[Gateway DNS only]
+Gateway only supports MSP-tenant account structures for DNS filtering.
+:::
+
+Gateway supports the Cloudflare Tenant API, which allows managed service providers (MSPs) to implement parent-child policy structures, supporting large-scale multi-tenant deployments with centralized policy control and account-level overrides.
+
+## Account types
+
+The Gateway tenant platform supports parent-child and siloed accounts. Each account type offers different benefits based on organizational needs.
+
+### Parent-child accounts
+
+A hierarchical model where a parent account enforces global security policies that apply to all child accounts. Child accounts can override or supplement policies as needed while remaining under the parent account's management.
+
+### Siloed accounts
+
+Each account operates independently within the same tenant. Each account manages its own security policies, resources, and configurations separately.
