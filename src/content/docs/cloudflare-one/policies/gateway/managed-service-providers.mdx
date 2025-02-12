@@ -23,16 +23,18 @@ Once you have provisioned your customer's Cloudflare accounts, you can create [D
 
 ## Account types
 
-The Gateway Tenant platform supports parent-child and siloed accounts.
+The Gateway Tenant platform supports tiered and siloed accounts.
 
-### Parent-child accounts
+### Tiered accounts
 
-In a parent-child configuration, a top-level parent account enforces global security policies that apply to all child accounts. Child accounts can configure, override, or add policies as needed while still managed by the parent account.
+{/* <!-- TODO: convert first diagram from blog post to mermaid flowchart --> */}
 
-Parent account policy is evaluated before a child account policy. If the parent policy has selected 'allow child bypass' the child can override the parent policy.
+In a tiered account configuration, a top-level parent account enforces global security policies that apply to all of its child accounts. Child accounts can override or add policies as needed while still managed by the parent account.
 
-{/* <!-- Where is the 'Allow child bypass' setting? Do we need to surface this publicly? --> */}
+Gateway evaluates parent account policies before a child account policies. To allow a child account to override a parent account's policy, you can use the [Update a Zero Trust Gateway rule](/api/resources/zero_trust/subresources/gateway/subresources/rules/methods/update/) endpoint to set the policy's `allow_child_bypass` rule setting to `true`.
 
 ### Siloed accounts
+
+{/* <!-- TODO: convert second diagram from blog post to mermaid flowchart --> */}
 
 Each account operates independently within the same tenant. Each account manages its own security policies, resources, and configurations separately.
