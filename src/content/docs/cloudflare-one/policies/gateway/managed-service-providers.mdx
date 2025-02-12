@@ -19,6 +19,8 @@ The Gateway tenant platform supports parent-child and siloed accounts. Each acco
 
 A hierarchical model where a parent account enforces global security policies that apply to all child accounts. Child accounts can override or supplement policies as needed while remaining under the parent account's management.
 
+Parent account policy is evaluated before a child account policy. If the parent policy has selected 'allow child bypass' the child can override the parent policy.
+
 ### Siloed accounts
 
 Each account operates independently within the same tenant. Each account manages its own security policies, resources, and configurations separately.
