@@ -9,19 +9,29 @@ sidebar:
 Only available on Enterprise plans. For more information, contact your account team.
 :::
 
-Gateway supports the [Cloudflare Tenant API](/tenant/), which allows Cloudflare-partnered managed service providers (MSPs) to set up and manage Cloudflare accounts and services for their customers. Tenants can create Zero Trust deployments with centralized Gateway policy control and account-level overrides.
+Gateway supports the [Cloudflare Tenant API](/tenant/), which allows Cloudflare-partnered managed service providers (MSPs) to set up and manage Cloudflare accounts and services for their customers. With Tenant, MSPs can create Zero Trust deployments with global Gateway policy control. Policies can be customized or overridden at a organization group or account level.
 
-The Tenant platform only supports creating Gateway DNS policies.
+The Tenant platform only supports Gateway DNS policies.
+
+## Get started
+
+{/* <!-- How much of the policy creation flow do we need to surface here? --> */}
+
+To set up the Tenant API, refer to [Get started](/tenant/get-started/).
+
+Once you have provisioned your customer's Cloudflare accounts, you can create [DNS policies](/cloudflare-one/policies/gateway/dns-policies/).
 
 ## Account types
 
-The Gateway Tenant platform supports parent-child and siloed accounts. Each account type offers different benefits based on organizational needs.
+The Gateway Tenant platform supports parent-child and siloed accounts.
 
 ### Parent-child accounts
 
-A hierarchical model where a parent account enforces global security policies that apply to all child accounts. Child accounts can override or supplement policies as needed while remaining under the parent account's management.
+In a parent-child configuration, a top-level parent account enforces global security policies that apply to all child accounts. Child accounts can configure, override, or add policies as needed while still managed by the parent account.
 
 Parent account policy is evaluated before a child account policy. If the parent policy has selected 'allow child bypass' the child can override the parent policy.
+
+{/* <!-- Where is the 'Allow child bypass' setting? Do we need to surface this publicly? --> */}
 
 ### Siloed accounts
 
