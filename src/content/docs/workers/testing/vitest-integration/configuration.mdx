@@ -10,7 +10,7 @@ description: Vitest configuration specific to the Workers integration.
 
 import { Details } from "~/components"
 
-The Workers Vitest integration provides additional configuration on top of Vitest's usual options. To configure the Workers Vitest integration, use the `poolOptions.workers` key. Use the [`defineWorkersConfig()`](/workers/testing/vitest-integration/configuration/#functions) function from the `@cloudflare/vitest-pool-workers/config` module for type checking and completions.
+The Workers Vitest integration provides additional configuration on top of Vitest's usual options. You can use the [`defineWorkersConfig()`](/workers/testing/vitest-integration/configuration/#defineworkersconfigoptions) API for better type checking and completions.
 
 An example configuration would be:
 
@@ -33,8 +33,7 @@ export default defineWorkersConfig({
 :::note
 
 
-Use [Vitest Workspaces](https://vitest.dev/guide/workspace) to only use the Workers Vitest integration for certain tests.
-
+Use [defineWorkersProject](#defineworkersprojectoptions) with [Vitest Workspaces](https://vitest.dev/guide/workspace) to specify a different configuration for certain tests.
 
 :::
 
