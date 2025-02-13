@@ -50,9 +50,9 @@ Custom Vitest `environment`s or `runner`s are not supported when using the Worke
 
 The following APIs are exported from the `@cloudflare/vitest-pool-workers/config` module.
 
-### `defineWorkersConfig(options)`
+### defineWorkersConfig(options)
 
-Ensures Vitest is configured to use the Workers integration with the correct module resolution settings, and provides type checking for [WorkersPoolOptions](#workerspooloptions). This should be used in place of the [`defineConfig()`](https://vitest.dev/config/file.html) function from Vitest. The `defineWorkersConfig()` function also accepts a `Promise` of `options`, or an optionally-`async` function returning `options`.
+Ensures Vitest is configured to use the Workers integration with the correct module resolution settings, and provides type checking for [WorkersPoolOptions](#workerspooloptions). This should be used in place of the [`defineConfig()`](https://vitest.dev/config/file.html) function from Vitest. It also accepts a `Promise` of `options`, or an optionally-`async` function returning `options`.
 
 ```ts
 import { defineWorkersConfig } from "@cloudflare/vitest-pool-workers/config";
@@ -68,9 +68,9 @@ export default defineWorkersConfig({
 });
 ```
 
-### `defineWorkersProject(options)`
+### defineWorkersProject(options)
 
-Ensures Vitest is configured to use the Workers integration with the correct module resolution settings, and provides type checking for [WorkersPoolOptions](#workerspooloptions) similar to `defineWorkersConfig`, except this should be used in place of the [`defineProject()`](https://vitest.dev/guide/workspace) function from Vitest. The `defineWorkersProject()` function also accepts a `Promise` of `options`, or an optionally-`async` function returning `options`.
+Similar to [`defineWorkersConfig()`](#defineworkersconfigoptions), this ensures Vitest is configured to use the Workers integration with the correct module resolution settings, and provides type checking for [WorkersPoolOptions](#workerspooloptions), except it should be used in place of the [`defineProject()`](https://vitest.dev/guide/workspace) function from Vitest. It also accepts a `Promise` of `options`, or an optionally-`async` function returning `options`.
 
 ```ts
 import { defineWorkspace, defineProject } from "vitest/config";
@@ -95,9 +95,9 @@ const workspace = defineWorkspace([
 export default workspace;
 ```
 
-### `buildPagesASSETSBinding(assetsPath)`
+### buildPagesASSETSBinding(assetsPath)
 
-Creates a Pages ASSETS binding that serves files insides the `assetsPath`. This is required if you uses `createPagesEventContext()` to test your Pages Functions. Refer to the [Pages recipe](/workers/testing/vitest-integration/recipes) for a full example.
+Creates a Pages ASSETS binding that serves files insides the `assetsPath`. This is required if you uses `createPagesEventContext()` or `SELF` to test your **Pages Functions**. Refer to the [Pages recipe](/workers/testing/vitest-integration/recipes) for a full example.
 
 ```ts
 import path from "node:path";
@@ -126,7 +126,7 @@ export default defineWorkersProject(async () => {
 
 ```
 
-### `readD1Migrations(migrationsPath)`
+### readD1Migrations(migrationsPath)
 
 Reads all [D1 migrations](/d1/reference/migrations/) stored at `migrationsPath` and returns them ordered by migration number. Each migration will have its contents split into an array of individual SQL queries. Call the [`applyD1Migrations()`](/workers/testing/vitest-integration/test-apis/#d1) function inside a test or [setup file](https://vitest.dev/config/#setupfiles) to apply migrations. Refer to the [D1 recipe](https://github.com/cloudflare/workers-sdk/tree/main/fixtures/vitest-pool-workers-examples/d1) for an example project using migrations.
 
