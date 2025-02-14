@@ -414,3 +414,4 @@ Refer to the [foreign key documentation](/d1/sql-api/foreign-keys/) to learn mor
 
 ### `PRAGMA optimize`
 
+Attempts to optimize the the database by running various maintenance operations. This statement runs `ANALYZE` if needed, which updates SQLite's internal statistics to improve query planning and makes better decisions on index usage.
