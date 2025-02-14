@@ -15,13 +15,17 @@ To create a Zero Trust organization:
 
 ## (Optional) Manage Zero Trust in Terraform
 
-You can use the [Cloudflare Terraform provider](https://registry.terraform.io/providers/cloudflare/cloudflare/4.40.0) to manage your Zero Trust organization alongside your other IT infrastructure. To get started with Terraform, refer to our [Terraform tutorial series](/terraform/tutorial/).
+You can use the [Cloudflare Terraform provider](https://registry.terraform.io/providers/cloudflare/cloudflare/latest) to manage your Zero Trust organization alongside your other IT infrastructure. To get started with Terraform, refer to our [Terraform tutorial series](/terraform/tutorial/).
 
 Zero Trust organizations cannot be created through Terraform. You must [sign up for Zero Trust](#sign-up-for-zero-trust) on the Cloudflare dashboard and then import the resource into your [Terraform configuration](/terraform/).
 
 To import your Zero Trust organization:
 
 <Tabs> <TabItem label="Terraform (v4)">
+
+:::note[Provider versions]
+The following example requires Cloudflare provider version `>=4.40.0`.
+:::
 
 1. Add the following permission to your [`cloudflare_api_token`](https://registry.terraform.io/providers/cloudflare/cloudflare/4.40.0/docs/resources/api_token):
 	- `Access: Organizations, Identity Providers, and Groups Write`
