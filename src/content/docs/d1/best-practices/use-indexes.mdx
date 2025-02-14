@@ -82,6 +82,10 @@ This will return output resembling the below:
 
 Note that you cannot modify this table, or an existing index. To modify an index, [delete it first](#remove-indexes) and [create a new index](#create-an-index) with the updated definition.
 
+## Run `PRAGMA optimize`
+
+After creating an index, run [`PRAGMA optimize`](/d1/sql-api/sql-statements/#pragma-optimize) to improve your database performance.
+
 ## Test an index
 
 Validate that an index was used for a query by prepending a query with [`EXPLAIN QUERY PLAN`](https://www.sqlite.org/eqp.html). This will output a query plan for the succeeding statement, including which (if any) indexes were used.
