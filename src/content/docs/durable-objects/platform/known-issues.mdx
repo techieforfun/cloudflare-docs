@@ -34,4 +34,6 @@ The Workers editor in the [Cloudflare dashboard](https://dash.cloudflare.com/) a
 
 ## Alarms in local Development
 
-Currently, Durable Object [alarm methods](/durable-objects/api/alarms) do not work when working in local development (when running `npx wrangler dev`).
+Currently, when developing locally (using `npx wrangler dev`), Durable Object [alarm methods](/durable-objects/api/alarms) may fail after a hot reload (if you edit the code while the code is running locally).
+
+To avoid this issue, when using Durable Object alarms, close and restart your `wrangler dev` command after editing your code.
