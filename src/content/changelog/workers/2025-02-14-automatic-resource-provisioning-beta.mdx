@@ -1,0 +1,42 @@
+---
+title: Automatically provision Cloudflare resources when deploying a Worker with Wrangler (Beta)
+description: When you deploy a Worker that binds to a Cloudflare resource, Wrangler will automatically detect and create any resources that do not exist on your account. 
+products:
+  - workers
+date: 2025-02-14 00:00:00 UTC
+---
+
+You can now automatically create Cloudflare resources when deploying a Worker with Wrangler. You no longer need to manually create any resources that do not yet exist on your account prior to deploying. Wrangler will automatically detect any required [KV](/kv), [D1](/d1), or [R2](/r2) resources and create them on your behalf. 
+
+```bash
+$ wrangler deploy --x-provision
+ ⛅️ wrangler 3.109.0
+--------------------
+
+Total Upload: 0.29 KiB / gzip: 0.22 KiB
+
+The following bindings need to be provisioned:
+- KV Namespaces:
+  - MY_KV 
+- D1 Databases:
+  - MY_D1 
+- R2 Buckets:
+  - MY_R2 
+
+...
+
+🎉 All resources provisioned, continuing with deployment...
+
+Your worker has access to the following bindings:
+- KV Namespaces:
+  - MY_KV: ...
+- D1 Databases:
+  - MY_D1: ...
+- R2 Buckets:
+  - MY_R2: ...
+Uploaded my-worker
+Deployed my-worker triggers
+  https://my-worker.workers.dev
+Current Version ID: ...
+```
+For more details, check out our [documentation](/workers/wrangler/automatic-resource-provisioning) on how to get started.
